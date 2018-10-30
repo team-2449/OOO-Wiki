@@ -51,6 +51,22 @@ public class DriveTrain extends Subsystem {
     	rightTalon.set(ControlMode.PercentOutput, right);
     }
     
+    public double getLeftDistance() {
+    	
+    }
+    
+    public double getRightDistance() {
+    	
+    }
+    
+    public double getIMUFacing() {
+    	
+    }
+    
+    public double getEncoderFacing() {
+    	
+    }
+    
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

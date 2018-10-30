@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2449.robot.commands;
 
+import org.usfirst.frc.team2449.robot.Robot;
 import org.usfirst.frc.team2449.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -59,8 +60,10 @@ public class DriveCurve extends Command {
     	
     	leftSetDistance = setDistance*((radius+0.5*RobotMap.trackWidth)/radius);
     	rightSetDistance = setDistance*((radius-0.5*RobotMap.trackWidth)/radius);
-    	leftSetDistance = setVelocity*((radius+0.5*RobotMap.trackWidth)/radius);
-    	rightSetDistance = setVelocity*((radius-0.5*RobotMap.trackWidth)/radius);
+    	leftSetVelocity = setVelocity*((radius+0.5*RobotMap.trackWidth)/radius);
+    	rightSetVelocity = setVelocity*((radius-0.5*RobotMap.trackWidth)/radius);
+    	
+    	Robot.drivetrain.driveDutyCycle((Robot.drivetrain.getLeftDistance()-leftSetDistance)*RobotMap.distancekP + leftSetVelocity*RobotMap.velocitykF - RobotMap.kTheta*Robot.drivetrain.getIMUFacing() - RobotMap.kPhi*Robot.drivetrain.getEncoderFacing(), (Robot.drivetrain.getRightDistance()-rightSetDistance)*RobotMap.distancekP + rightSetVelocity*RobotMap.velocitykF + RobotMap.kTheta*Robot.drivetrain.getIMUFacing() + RobotMap.kPhi*Robot.drivetrain.getEncoderFacing());
     }
 
     // Make this return true when this Command no longer needs to run execute()
