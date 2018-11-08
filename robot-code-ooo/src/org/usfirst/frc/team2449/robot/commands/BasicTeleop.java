@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class BasicTeleop extends Command {
 
-	DriveTrain drivetrain;  //Robot Drivetrain
-	Joystick joystick;  //Driver Joystick
+	private DriveTrain drivetrain;  //Robot Drivetrain
+	private Joystick joystick;  //Driver Joystick
 	
     public BasicTeleop() {
     	drivetrain = Robot.drivetrain;
