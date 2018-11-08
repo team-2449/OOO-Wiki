@@ -24,11 +24,10 @@ import org.usfirst.frc.team2449.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-	public static OI m_oi;
 	
-	public static DriveTrain drivetrain = new DriveTrain();
+	public static DriveTrain drivetrain = DriveTrain.createDriveTrain(6);
 
+	OI m_oi;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 

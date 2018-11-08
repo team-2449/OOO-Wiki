@@ -16,7 +16,7 @@ package org.usfirst.frc.team2449.robot;
 public class RobotMap {
 	
 	//Controller
-	public static int controllerPort = 0;  //Port for Joystick to be on.  Settable in driverstation.
+	public static int driverPort = 0;  //Port for Joystick to be on.  Settable in driverstation.
 	public static int leftAxis = 1;  //Number of left Joystick Axis
 	public static int rightAxis = 3;  //Number of right Joystick Axis
 	
@@ -30,11 +30,8 @@ public class RobotMap {
 	public static double pigeonkP = 0;  //Pigeon IMU pid values used for making point turns.
 	public static double pigeonkI = 0;
 	public static double pigeonkD = 0;
-	public static double kPhi = 0;  //Proportional value for Phi
+	public static double kPhi = 0;  //Proportional value for Phi  //PHI IS CURRENTLY NOT ENABLED  TODO: Add Phi Values
 	public static double kTheta = 0;  //Proportional value for Theta
-	public static double cruiseSpeed = 0.5;  //Cruise speed during arc traversal in linear units per second
-	public static double rampUpTime = 0.5;  //Time (in seconds) for robot to reach cruising speed;
-	public static double rampDownTime = 0.5;  //Time (in seconds) for robot to go from cruising speed to stopped;
 	
 	/*
 	 * A couple quick notes about the autonomous driving functions:

@@ -29,47 +29,75 @@ public class DriveTrain extends Subsystem {
 	private TalonSRX rightTalon;
 	
 	
-    public DriveTrain(TalonSRX leftTalon,TalonSRX rightTalon) {  //Constructor for 2 motor Drivetrain
+    private DriveTrain(TalonSRX leftTalon,TalonSRX rightTalon) {  //Constructor for 2 motor Drivetrain
     	this.leftTalon = leftTalon;
     	this.rightTalon = rightTalon;
     }
     
-    public DriveTrain(TalonSRX leftTalon, IMotorController left1Follower, TalonSRX rightTalon, IMotorController right1Follower) {  //Constructor for 4 motor Drivetrain
+    private DriveTrain(TalonSRX leftTalon, IMotorController left1Follower, TalonSRX rightTalon, IMotorController right1Follower) {  //Constructor for 4 motor Drivetrain
     	this(leftTalon,rightTalon);
     	left1Follower.follow(this.leftTalon);  //Set the follower Talons to copy the duty cycle of the main talons, which we will be commanding.
     	right1Follower.follow(this.rightTalon);
     }
 
-    public DriveTrain(TalonSRX leftTalon, IMotorController left1Follower, IMotorController left2Follower, TalonSRX rightTalon, IMotorController right1Follower, IMotorController right2Follower) {  //Constructor for 6 motor Drivetrain
+    private DriveTrain(TalonSRX leftTalon, IMotorController left1Follower, IMotorController left2Follower, TalonSRX rightTalon, IMotorController right1Follower, IMotorController right2Follower) {  //Constructor for 6 motor Drivetrain
     	this(leftTalon,left1Follower,rightTalon,right1Follower);
     	left2Follower.follow(this.leftTalon);  ////Set the follower Talons to copy the duty cycle of the main talons, which we will be commanding.
     	right2Follower.follow(this.rightTalon);
     }
-    
-    public void driveDutyCycle(double left, double right) {  //Drive motors using duty cycle control
+
+	public void driveDutyCycle(double left, double right) {  //Drive motors using duty cycle control
     	leftTalon.set(ControlMode.PercentOutput, left);
     	rightTalon.set(ControlMode.PercentOutput, right);
     }
     
     public double getLeftDistance() {
-    	
+    	return 0;
     }
     
     public double getRightDistance() {
-    	
+    	return 0;
     }
     
     public double getIMUFacing() {
-    	
+    	return 0;
     }
     
     public double getEncoderFacing() {
+    	return 0;
+    }
+    
+    public void tareSensors() {  //Set sensors to zero
     	
     }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    }
+    
+    public static DriveTrain createDriveTrain(int motorCount) {  //Factory for creating drivetrain objects.  TODO: Add functionality for using Victor SPX's
+    	DriveTrain drivetrain = null;
+    	switch (motorCount) {
+    	case 2:
+    		drivetrain = new DriveTrain(new TalonSRX(0), new TalonSRX(1));
+    		break;
+		case 4:
+    		drivetrain = new DriveTrain(new TalonSRX(0), new TalonSRX(1), new TalonSRX(2), new TalonSRX(3));
+    		break;
+		case 6:
+			drivetrain = new DriveTrain(new TalonSRX(0), new TalonSRX(1), new TalonSRX(2), new TalonSRX(3), new TalonSRX(4), new TalonSRX(5));
+			break;
+		default:
+			try {
+				throw new Exception("Please Set Drivetrain Motor Count to 2, 4, or 6");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+    	}
+    	return drivetrain;
     }
 }
 
