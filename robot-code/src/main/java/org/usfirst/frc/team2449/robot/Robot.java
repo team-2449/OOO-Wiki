@@ -7,14 +7,16 @@
 
 package org.usfirst.frc.team2449.robot;
 
+import org.usfirst.frc.team2449.robot.commands.BasicTeleop;
+import org.usfirst.frc.team2449.robot.commands.DriveCurve;
+import org.usfirst.frc.team2449.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2449.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team2449.robot.commands.ExampleCommand;
-import org.usfirst.frc.team2449.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team2449.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -84,6 +86,8 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
+		
+		new DriveCurve(360,1,0.5,1).start();
 	}
 
 	/**
@@ -99,7 +103,8 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
-		
+		new BasicTeleop().start();
+		drivetrain.tareSensors();
 	}
 
 	/**
@@ -108,12 +113,17 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("left Encoder Distance", drivetrain.getLeftDistance());
+		SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightDistance());
+		SmartDashboard.putNumber("left Encoder Velocity", drivetrain.getLeftVelocity());
+		SmartDashboard.putNumber("Right Encoder Velocity", drivetrain.getRightVelocity());
 	}
-
+	
 	/**
 	 * This function is called periodically during test mode.
 	 */
 	@Override
 	public void testPeriodic() {
+		
 	}
 }

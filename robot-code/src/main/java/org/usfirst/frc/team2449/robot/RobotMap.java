@@ -24,9 +24,9 @@ public class RobotMap {
 	public static double distancekP = 0;  //Drivetrain encoder PID values.  Check the wiki for how to tune these.
 	public static double distancekI = 0;
 	public static double distancekD = 0;
-	public static double velocitykF = 0;
-	public static double ticksPerUnit = 1;  //Sets amount of encoder ticks per arbitrary (linear) unit.  Figure this out experimentally, with current designs, this changes based on gearing, wheel diameter, what stage encoder is placed on, slop, etc.
-	public static double trackWidth = 3;  //Distance between center of the 2 'tank tracks'.  Make sure that this is the same unit as above.
+	public static double velocitykF = .0549450549;
+	public static double ticksPerUnit = -2562.8;  //Sets amount of encoder ticks per arbitrary (linear) unit.  Figure this out experimentally, with current designs, this changes based on gearing, wheel diameter, what stage encoder is placed on, slop, etc.
+	public static double trackWidth = 2;  //Distance between center of the 2 'tank tracks'.  Make sure that this is the same unit as above.
 	public static double pigeonkP = 0;  //Pigeon IMU pid values used for making point turns.
 	public static double pigeonkI = 0;
 	public static double pigeonkD = 0;

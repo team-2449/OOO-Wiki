@@ -29,7 +29,7 @@ public class BasicTeleop extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//Set robot to do a basic tank drive
-    	drivetrain.driveDutyCycle(joystick.getRawAxis(RobotMap.leftAxis), joystick.getRawAxis(RobotMap.rightAxis));  //TODO: Write a better way to interact with the different types of Joysticks
+    	drivetrain.driveDutyCycle(-joystick.getRawAxis(RobotMap.leftAxis), -joystick.getRawAxis(RobotMap.rightAxis));  //TODO: Write a better way to interact with the different types of Joysticks
     }
 
     // Make this return true when this Command no longer needs to run execute()
