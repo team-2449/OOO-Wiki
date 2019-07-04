@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - FlowControl",
+            "request": "launch",
+            "mainClass": "FlowControl.FlowControl",
+            "projectName": "samplecode_5bb47906"
+        }
+    ]
+}
